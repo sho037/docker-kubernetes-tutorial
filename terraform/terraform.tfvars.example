@@ -1,3 +1,8 @@
 proxmox_api_url = "https://proxmox.example.com:8006/api2/json"
 proxmox_user    = "terraform-prov@pve"
 proxmox_pass    = "value"
+
+master_pass     = "value"
+node1_pass      = "value"
+node2_pass      = "value"
+ssh_key         = "ssh_public_key"
