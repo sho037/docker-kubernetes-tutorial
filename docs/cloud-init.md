@@ -1,15 +1,20 @@
 # Proxmox に cloud-init テンプレートを作成する
 
-## 1 準備
+## 1 はじめに
+
+Proxmox のスナップショット機能を使いたいために、`local`ストレージ上に cloud-init のストレージを配置しています。  
+デフォルトではディスクイメージを配置できないため、設定を変更します。
+
+<img src="./image/storage.jpg" width="30%">
+
+## 2 準備
+
+[Ubuntu Server 20.04 (Focal Fossa)](https://cloud-images.ubuntu.com/focal/current/)を使用しています。  
+ディスクイメージに`QEMUゲストエージェント`をインストールする。
 
 ```bash
 sudo apt install libguestfs-tools -y
 ```
-
-## 2 テンプレートの作成
-
-[Ubuntu Server 20.04](https://cloud-images.ubuntu.com/focal/current/)を使用しています  
-Proxmox クラスタまたはホストのシェルで以下を実行する
 
 ```bash
 curl -O https://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-amd64.img
@@ -18,6 +23,10 @@ curl -O https://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-amd6
 ```bash
 virt-customize -a focal-server-cloudimg-amd64.img --install qemu-guest-agent
 ```
+
+## 3 テンプレートの作成
+
+Proxmox クラスタまたはホストのシェルで以下を実行する
 
 ```bash
 qm create 9000 --name ubuntu2004-cloud-init --memory 2048 --net0 virtio,bridge=vmbr0
@@ -50,6 +59,8 @@ qm template 9000
 ```bash
 rm focal-server-cloudimg-amd64.img
 ```
+
+Next> [Terraform の Proxmox ユーザーとロールの作成](./terraform.md#3-terraform-の-proxmox-ユーザーとロールの作成)
 
 ## 参考
 
