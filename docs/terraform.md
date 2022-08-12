@@ -54,7 +54,25 @@ terraform init
 terraform apply
 ```
 
-VM を削除する
+> 出力
+
+```bash
+proxmox_vm_qemu.k8s-node1: Creating...
+proxmox_vm_qemu.k8s-master: Creating...
+proxmox_vm_qemu.k8s-node2: Creating...
+
+...
+
+proxmox_vm_qemu.k8s-node1: Creation complete after 1m10s [id=pve1/qemu/1001]
+proxmox_vm_qemu.k8s-node2: Creation complete after 1m10s [id=pve1/qemu/1002]
+proxmox_vm_qemu.k8s-master: Creation complete after 1m12s [id=pve1/qemu/1000]
+
+Apply complete! Resources: 3 added, 0 changed, 0 destroyed.
+```
+
+以上で VM の作成は完了です
+
+VM を削除する場合
 
 ```bash
 terraform destroy
