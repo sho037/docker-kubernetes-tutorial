@@ -60,7 +60,7 @@ qm template 9000
 rm focal-server-cloudimg-amd64.img
 ```
 
-Next> [Terraform の Proxmox ユーザーとロールの作成](./terraform.md#3-%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%AB%E3%83%AD%E3%83%BC%E3%83%AB%E3%82%92%E4%BB%98%E4%B8%8E)
+Next> [Terraform の Proxmox ユーザーとロールの作成](https://github.com/mu-ruU1/docker-kubernetes-demo/blob/main/docs/terraform.md#3-terraform-%E3%81%AE-proxmox-%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%A8%E3%83%AD%E3%83%BC%E3%83%AB%E3%81%AE%E4%BD%9C%E6%88%90)
 
 ## 参考
 
