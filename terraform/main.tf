@@ -10,97 +10,98 @@ terraform {
 }
 
 variable "proxmox_api_url" {
-  type = string
+  type      = string
+  sensitive = false
 }
 
 variable "proxmox_user" {
   type      = string
-  sensitive = true
+  sensitive = false
 }
 
 variable "proxmox_pass" {
   type      = string
-  sensitive = true
+  sensitive = false
 }
 
 variable "node" {
   type      = string
-  sensitive = true
+  sensitive = false
 }
 
 variable "vmpw" {
   type      = string
-  sensitive = true
+  sensitive = false
 }
 
 variable "ssh_key" {
   type      = string
-  sensitive = true
+  sensitive = false
 }
 
 variable "storage" {
   type      = string
-  sensitive = true
+  sensitive = false
 }
 
 variable "size" {
   type      = string
-  sensitive = true
+  sensitive = false
 }
 
 variable "cpu_core" {
   type      = number
-  sensitive = true
+  sensitive = false
 }
 
 variable "memory" {
   type      = number
-  sensitive = true
+  sensitive = false
 }
 
 variable "master_ip" {
   type      = string
-  sensitive = true
+  sensitive = false
 }
 
 variable "master_id" {
   type      = string
-  sensitive = true
+  sensitive = false
 }
 
 variable "master_user" {
   type      = string
-  sensitive = true
+  sensitive = false
 }
 
 variable "node1_ip" {
   type      = string
-  sensitive = true
+  sensitive = false
 }
 
 variable "node1_id" {
   type      = string
-  sensitive = true
+  sensitive = false
 }
 
 variable "node1_user" {
   type      = string
-  sensitive = true
+  sensitive = false
 }
 
 variable "node2_ip" {
   type      = string
-  sensitive = true
+  sensitive = false
 }
 
 variable "node2_id" {
   type      = string
-  sensitive = true
+  sensitive = false
 }
 
 variable "node2_user" {
   type      = string
-  sensitive = true
+  sensitive = false
 }
 
 provider "proxmox" {
