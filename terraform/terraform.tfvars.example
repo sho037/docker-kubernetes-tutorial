@@ -10,7 +10,7 @@ storage  = "local"
 size     = "20G"
 ssh_key  = "ssh_public_key"
 cpu_core = 2
-memory   = 2
+memory   = 2048
 
 # k8s-master
 master_id   = "1000"
