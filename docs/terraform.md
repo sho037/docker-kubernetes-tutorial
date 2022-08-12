@@ -3,6 +3,7 @@
 ## 1 はじめに
 
 Kubernetes クラスタを作るにあたり、[Proxmox VE](https://proxmox.com/en/)を使用します。  
+これから説明する手順を行うことで Proxmox VE に Kubernetes クラスタで用いる VM を簡単に作成することができます。  
 下の表はデフォルトで Terraform が構築する VM のリストです。  
 環境に合わせて `terraform.tfvars`と`resource.tf`を編集して下さい。
 
