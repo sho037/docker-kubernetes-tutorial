@@ -53,6 +53,12 @@ terraform init
 terraform apply
 ```
 
+VM を削除する
+
+```bash
+terraform destroy
+```
+
 ## 参考
 
 - [Terraform provider plugin for Proxmox](https://registry.terraform.io/providers/Telmate/proxmox/)
