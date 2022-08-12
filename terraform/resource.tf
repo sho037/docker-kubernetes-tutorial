@@ -1,6 +1,6 @@
 resource "proxmox_vm_qemu" "k8s-master" {
   name        = "k8s-master"
-  desc        = "k8s-master (Ubuntu 20.04 Focal Fossa)"
+  desc        = "## k8s-master (Ubuntu 20.04 Focal Fossa)"
   vmid        = var.master_id
   target_node = var.node
 
@@ -33,7 +33,7 @@ resource "proxmox_vm_qemu" "k8s-master" {
 
 resource "proxmox_vm_qemu" "k8s-node1" {
   name        = "k8s-node1"
-  desc        = "k8s-node1 (Ubuntu 20.04 Focal Fossa)"
+  desc        = "## k8s-node1 (Ubuntu 20.04 Focal Fossa)"
   vmid        = var.node1_id
   target_node = var.node
 
@@ -66,7 +66,7 @@ resource "proxmox_vm_qemu" "k8s-node1" {
 
 resource "proxmox_vm_qemu" "k8s-node2" {
   name        = "k8s-node2"
-  desc        = "k8s-node2 (Ubuntu 20.04 Focal Fossa)"
+  desc        = "## k8s-node2 (Ubuntu 20.04 Focal Fossa)"
   vmid        = var.node2_id
   target_node = var.node
 
