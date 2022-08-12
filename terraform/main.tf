@@ -23,22 +23,82 @@ variable "proxmox_pass" {
   sensitive = true
 }
 
-variable "master_pass" {
+variable "node" {
   type      = string
   sensitive = true
 }
 
-variable "node1_pass" {
-  type      = string
-  sensitive = true
-}
-
-variable "node2_pass" {
+variable "vmpw" {
   type      = string
   sensitive = true
 }
 
 variable "ssh_key" {
+  type      = string
+  sensitive = true
+}
+
+variable "storage" {
+  type      = string
+  sensitive = true
+}
+
+variable "size" {
+  type      = string
+  sensitive = true
+}
+
+variable "cpu_core" {
+  type      = number
+  sensitive = true
+}
+
+variable "memory" {
+  type      = number
+  sensitive = true
+}
+
+variable "master_ip" {
+  type      = string
+  sensitive = true
+}
+
+variable "master_id" {
+  type      = string
+  sensitive = true
+}
+
+variable "master_user" {
+  type      = string
+  sensitive = true
+}
+
+variable "node1_ip" {
+  type      = string
+  sensitive = true
+}
+
+variable "node1_id" {
+  type      = string
+  sensitive = true
+}
+
+variable "node1_user" {
+  type      = string
+  sensitive = true
+}
+
+variable "node2_ip" {
+  type      = string
+  sensitive = true
+}
+
+variable "node2_id" {
+  type      = string
+  sensitive = true
+}
+
+variable "node2_user" {
   type      = string
   sensitive = true
 }

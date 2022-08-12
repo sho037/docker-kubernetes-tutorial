@@ -1,19 +1,18 @@
 resource "proxmox_vm_qemu" "k8s-master" {
   name        = "k8s-master"
   desc        = "k8s-master (Ubuntu 20.04 Focal Fossa)"
-  vmid        = "1000"
-  target_node = "pve1"
+  vmid        = var.master_id
+  target_node = var.node
 
   agent = 1
 
   clone      = "ubuntu2004-cloud-init"
   full_clone = true
-  cores      = 2
+  cores      = var.cpu_core
   sockets    = 1
-  # cpu        = "kvm64"
-  memory = 2048
+  memory     = var.memory
 
-  cipassword = var.master_pass
+  cipassword = var.vmpw
 
   network {
     bridge = "vmbr0"
@@ -21,34 +20,32 @@ resource "proxmox_vm_qemu" "k8s-master" {
   }
 
   disk {
-    storage = "local"
+    storage = var.storage
     type    = "scsi"
-    size    = "20G"
+    size    = var.size
   }
 
   os_type   = "cloud-init"
-  ipconfig0 = "ip=192.168.0.10/24,gw=192.168.0.1"
-  # nameserver = "0.0.0.0"
-  ciuser  = "k8s"
-  sshkeys = var.ssh_key
+  ipconfig0 = var.master_ip
+  ciuser    = var.master_user
+  sshkeys   = var.ssh_key
 }
 
 resource "proxmox_vm_qemu" "k8s-node1" {
   name        = "k8s-node1"
   desc        = "k8s-node1 (Ubuntu 20.04 Focal Fossa)"
-  vmid        = "1001"
-  target_node = "pve1"
+  vmid        = var.node1_id
+  target_node = var.node
 
   agent = 1
 
   clone      = "ubuntu2004-cloud-init"
   full_clone = true
-  cores      = 2
+  cores      = var.cpu_core
   sockets    = 1
-  # cpu        = "kvm64"
-  memory = 2048
+  memory     = var.memory
 
-  cipassword = var.node1_pass
+  cipassword = var.vmpw
 
   network {
     bridge = "vmbr0"
@@ -56,34 +53,32 @@ resource "proxmox_vm_qemu" "k8s-node1" {
   }
 
   disk {
-    storage = "local"
+    storage = var.storage
     type    = "scsi"
-    size    = "20G"
+    size    = var.size
   }
 
   os_type   = "cloud-init"
-  ipconfig0 = "ip=192.168.0.11/24,gw=192.168.0.1"
-  # nameserver = "0.0.0.0"
-  ciuser  = "k8s"
-  sshkeys = var.ssh_key
+  ipconfig0 = var.node1_ip
+  ciuser    = var.node1_user
+  sshkeys   = var.ssh_key
 }
 
 resource "proxmox_vm_qemu" "k8s-node2" {
   name        = "k8s-node2"
   desc        = "k8s-node2 (Ubuntu 20.04 Focal Fossa)"
-  vmid        = "1002"
-  target_node = "pve1"
+  vmid        = var.node2_id
+  target_node = var.node
 
   agent = 1
 
   clone      = "ubuntu2004-cloud-init"
   full_clone = true
-  cores      = 2
+  cores      = var.cpu_core
   sockets    = 1
-  # cpu        = "kvm64"
-  memory = 2048
+  memory     = var.memory
 
-  cipassword = var.node2_pass
+  cipassword = var.vmpw
 
   network {
     bridge = "vmbr0"
@@ -91,14 +86,13 @@ resource "proxmox_vm_qemu" "k8s-node2" {
   }
 
   disk {
-    storage = "local"
+    storage = var.storage
     type    = "scsi"
-    size    = "20G"
+    size    = var.size
   }
 
   os_type   = "cloud-init"
-  ipconfig0 = "ip=192.168.0.12/24,gw=192.168.0.1"
-  # nameserver = "0.0.0.0"
-  ciuser  = "k8s"
-  sshkeys = var.ssh_key
+  ipconfig0 = var.node2_ip
+  ciuser    = var.node2_user
+  sshkeys   = var.ssh_key
 }

@@ -1,8 +1,28 @@
+# Proxmox VE
 proxmox_api_url = "https://proxmox.example.com:8006/api2/json"
 proxmox_user    = "terraform-prov@pve"
 proxmox_pass    = "value"
+node            = "pve1"
 
-master_pass     = "value"
-node1_pass      = "value"
-node2_pass      = "value"
-ssh_key         = "ssh_public_key"
+# common
+vmpw     = "password"
+storage  = "local"
+size     = "20G"
+ssh_key  = "ssh_public_key"
+cpu_core = 2
+memory   = 2
+
+# k8s-master
+master_id   = "1000"
+master_ip   = "ip=192.168.0.10/24,gw=192.168.0.1"
+master_user = "k8s"
+
+# k8s-node1
+node1_id   = "1001"
+node1_ip   = "ip=192.168.0.11/24,gw=192.168.0.1"
+node1_user = "k8s"
+
+# k8s-node2
+node2_id   = "1002"
+node2_ip   = "ip=192.168.0.12/24,gw=192.168.0.1"
+node2_user = "k8s"
