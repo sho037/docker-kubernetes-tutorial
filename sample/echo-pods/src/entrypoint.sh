@@ -11,4 +11,4 @@ color=`echo $random | cut -c 1-6`
 
 echo "$key$color\"" > .env
 
-exit 0
+. /usr/local/bin/docker-php-entrypoint apache2-foreground
