@@ -17,4 +17,4 @@ ENV PATH $PATH:/composer/vendor/bin
 
 RUN composer install
 
-RUN ./colorcode.sh
+ENTRYPOINT [ "/var/www/html/entrypoint.sh" ]
