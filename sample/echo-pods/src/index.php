@@ -60,6 +60,13 @@ date_default_timezone_set('Asia/Tokyo');
             <td><?php echo $_ENV['COLOR']; ?></td>
         </tr>
     </table>
+
+    <!-- v3.0の自動リロード -->
+    <script>
+        setTimeout(function() {
+            location.reload();
+        }, 6000);
+    </script>
 </body>
 
 </html>
