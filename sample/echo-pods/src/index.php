@@ -16,9 +16,14 @@ date_default_timezone_set('Asia/Tokyo');
     <title>echo-pods</title>
     <style>
         table {
-            width: 40%;
             table-layout: fixed;
             background: white;
+            border-collapse: separate;
+            border-spacing: 20px 5px;
+        }
+
+        body {
+            font-size: x-large;
         }
     </style>
 </head>
@@ -27,23 +32,31 @@ date_default_timezone_set('Asia/Tokyo');
 
     <table>
         <tr>
-            <th>ホスト名</th>
+            <th>Host</th>
             <td><?php echo $_SERVER['SERVER_NAME']; ?></td>
         </tr>
         <tr>
-            <th>IPアドレス</th>
+            <th>Pod-IP</th>
             <td><?php echo $_SERVER['SERVER_ADDR']; ?></td>
         </tr>
         <tr>
-            <th>ポート番号</th>
+            <th>Port</th>
             <td><?php echo $_SERVER['SERVER_PORT']; ?></td>
         </tr>
         <tr>
-            <th>現在時刻</th>
+            <th>Pod-Name</th>
+            <td><?php include('/etc/hostname'); ?></td>
+        </tr>
+        <tr>
+            <th>Time</th>
             <td><?php echo date('Y-m-d H:i:s'); ?></td>
         </tr>
         <tr>
-            <th>カラーコード</th>
+            <th>Image</th>
+            <td><a href="https://hub.docker.com/r/muruu1/echo-pods" target="_blank" rel="noopener noreferrer">muruu1/echo-pods</a>:v1.0</td>
+        </tr>
+        <tr>
+            <th>Color</th>
             <td><?php echo $_ENV['COLOR']; ?></td>
         </tr>
     </table>
