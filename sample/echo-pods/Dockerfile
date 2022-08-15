@@ -3,7 +3,7 @@ FROM php:8.1.4-apache
 COPY ./src/ /var/www/html
 
 RUN apt-get update && apt-get install -y \
-    git
+    unzip
 
 WORKDIR /var/www/html
 
