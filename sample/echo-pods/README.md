@@ -6,6 +6,12 @@
 `muruu1/echo-pods:v2.0`  
 `muruu1/echo-pods:v1.0`
 
+リソースの再起動
+
+```bash
+kubectl rollout restart -n default deployment echo-pods
+```
+
 ## 参考
 
 - [docker-library / php](https://github.com/docker-library/php/tree/master/8.1/bullseye/apache) (GitHub)
