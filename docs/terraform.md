@@ -78,6 +78,8 @@ VM を削除する場合
 terraform destroy
 ```
 
+Next> [Kubernetes クラスタ構築(1)](./setup-k8s-common.md)
+
 ## 参考
 
 - [Terraform provider plugin for Proxmox](https://registry.terraform.io/providers/Telmate/proxmox/)

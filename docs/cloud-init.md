@@ -5,7 +5,7 @@
 Proxmox のスナップショット機能を使いたいために、`local`ストレージ上に cloud-init のストレージを配置しています。  
 デフォルトではディスクイメージを配置できないため、設定を変更します。
 
-<img src="./image/storage.jpg" width="30%">
+<img src="./image/storage.jpg" width="40%">
 
 ## 2 準備
 
