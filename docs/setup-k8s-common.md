@@ -13,7 +13,7 @@
 
 | パッケージ | バージョン |    役割    |
 | :--------: | :--------: | :--------: |
-| Kubernetes |    1.24    | Kubernetes |
+| Kubernetes |   1.24.4   | Kubernetes |
 | containerd |   1.6.7    |    CRI     |
 |  flannel   |   0.19.1   |    CNI     |
 
