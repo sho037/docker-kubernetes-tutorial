@@ -1,3 +1,6 @@
-# はじめて触る Docker Kubernetes
+# はじめて触る Docker / Kubernetes
 
-Proxmox VE に Kubernetes 環境を作る場合は[こちら](docs/terraform.md)をご覧ください
+## 環境構築
+
+1. [Proxmox VE に k8s で用いる VM の作成](./docs/terraform.md)
+2. [kubeadm を用いた k8s クラスタの構築](./docs/setup-k8s-common.md)
