@@ -2,6 +2,6 @@ version: '3'
 services:
   echo-pods:
     container_name: echo-pods
-    build: ./
+    image: muruu1/echo-pods
     ports:
       - 8080:80
