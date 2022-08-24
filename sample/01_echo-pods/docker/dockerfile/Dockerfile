@@ -3,7 +3,8 @@ FROM php:apache-buster
 COPY ./src/ /var/www/html
 
 RUN apt-get update && apt-get install -y \
-    unzip
+    unzip \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /var/www/html
 
