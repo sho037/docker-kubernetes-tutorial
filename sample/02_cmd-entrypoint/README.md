@@ -5,7 +5,7 @@
 イメージを作成
 
 ```bash
-docker image build . --tag exec-figlet --file 01_Dockerfile
+docker image build --tag exec-figlet --file 01_Dockerfile .
 ```
 
 ```bash
@@ -21,7 +21,7 @@ docker container run --rm exec-figlet -f slant OIT HxS
 イメージを作成
 
 ```bash
-docker image build . --tag shell-figlet --file 02_Dockerfile
+docker image build --tag shell-figlet --file 02_Dockerfile .
 ```
 
 ```bash
@@ -57,7 +57,7 @@ docker container run --rm shell-figlet -f slant OIT HxS
 イメージを作成
 
 ```bash
-docker image build . --tag exec2-figlet --file 03_Dockerfile
+docker image build --tag exec2-figlet --file 03_Dockerfile .
 ```
 
 ```bash
