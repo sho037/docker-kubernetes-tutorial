@@ -28,7 +28,23 @@ export PATH=/home/$USER/bin:$PATH
 export DOCKER_HOST=unix:///run/user/1000/docker.sock
 ```
 
-### 4 コマンドライン補完のインストール
+### 4 systemd
+
+systemd unit ファイルは`~/.config/systemd/user/docker.service`にあります
+
+```bash
+systemctl --user start docker
+```
+
+```bash
+systemctl --user enable docker
+```
+
+```bash
+sudo loginctl enable-linger $(whoami)
+```
+
+### 5 コマンドライン補完のインストール
 
 ```bash
 sudo curl \
@@ -36,7 +52,7 @@ sudo curl \
     -o /etc/bash_completion.d/docker
 ```
 
-### 5 ターミナルを再読込する
+### 6 ターミナルを再読込する
 
 ターミナルを閉じて新しいものを開くか、現在のターミナルで以下のコマンドを実行して下さい
 
@@ -44,7 +60,7 @@ sudo curl \
 source ~/.bashrc
 ```
 
-### 6 インストールを確認
+### 7 インストールを確認
 
 ```bash
 docker -v
@@ -79,3 +95,28 @@ chmod +x ~/bin/docker-compose
 ```bash
 docker-compose -v
 ```
+
+## BuildKit での構築を有効化する
+
+有効化の方法は 2 つあります
+
+- `~/.bashrc`に追記する
+
+```bash
+export DOCKER_BUILDKIT=1
+```
+
+- daemon.json に記述
+
+本来の Docker は`/etc/docker/daemon.json`に記述しますが、Rootless モードの場合は`~/.config/docker/daemon.json`ファイルを作る必要があります。
+
+```bash
+{ "features": { "buildkit": true } }
+```
+
+## 参考
+
+- [root ユーザー以外による Docker デーモン起動](https://matsuand.github.io/docs.docker.jp.onthefly/engine/security/rootless/)
+- [Docker デーモンをルート以外のユーザで実行](https://docs.docker.jp/engine/security/rootless.html)
+- [Docker を安全に一般ユーザで実行する](https://e-penguiner.com/rootless-docker-for-nonroot/)
+- [BuildKit によるイメージ構築](https://matsuand.github.io/docs.docker.jp.onthefly/develop/develop-images/build_enhancements/)
