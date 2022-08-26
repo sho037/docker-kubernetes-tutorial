@@ -192,12 +192,34 @@ sudo apt-get install -y kubelet kubeadm kubectl
 sudo apt-mark hold kubelet kubeadm kubectl
 ```
 
+## 6 kubectl の自動補完を有効にする
+
+Bash による補完は`bash-completion`をインストールしている必要があります。
+
+```bash
+sudo apt-get install bash-completion
+```
+
+すべてのシェルセッションにて kubectl の補完スクリプトを source できるようにするには 2 つの方法があります。
+
+- 補完スクリプトを`/etc/bash_completion.d`ディレクトリに追加する
+
+```bash
+kubectl completion bash >/etc/bash_completion.d/kubectl
+```
+
+- 補完スクリプトを`~/.bashrc`内で source する
+
+```bash
+echo 'source <(kubectl completion bash)' >>~/.bashrc
+```
+
 Next> [Kubernetes クラスタ構築(2)](./setup-k8s-master.md)
 
 ## 参考
 
 ドキュメント作成にあたり[kubeadm のインストール](https://kubernetes.io/ja/docs/setup/production-environment/tools/kubeadm/install-kubeadm/) (公式)を参考にしています
-
+- [kubectlのインストールおよびセットアップ](https://kubernetes.io/ja/docs/tasks/tools/install-kubectl/)
 - [【おうち k8s クラスタ】 Kubernetes クラスタ構築編 (containerd + flannel)](https://4mo.co/k8s-setup-home-cluster/)
 - [Kubernetes 1.20 から Docker が非推奨になる理由](https://blog.inductor.me/entry/2020/12/03/061329)
 - [Ubuntu 22.04 に Kubernetes をインストールして自宅クラウド](https://rabbit-note.com/2022/08/09/build-kubernetes-home-cluster/)

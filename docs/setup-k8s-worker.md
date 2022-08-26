@@ -45,6 +45,8 @@ kubectl get pods -A
 
 以上でセットアップは終了です。
 
+---
+
 ## トラブルシューティング (全てのノードで実行)
 
 Kubernetes クラスタをセットアップ前の状態に戻す
@@ -52,6 +54,8 @@ Kubernetes クラスタをセットアップ前の状態に戻す
 ```bash
 kubeadm reset
 ```
+
+Next> [Kubernetes クラスタ構築(4)](./setup-k8s-other.md)
 
 ## 参考
 
