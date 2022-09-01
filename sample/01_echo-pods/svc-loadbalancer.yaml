@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: echo-pods-lb
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+  selector:
+    app: echo-pods

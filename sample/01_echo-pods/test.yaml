@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: echo-pods
+  labels:
+    app: echo-pods
 spec:
   replicas: 4
   selector:
@@ -13,21 +15,21 @@ spec:
         app: echo-pods
     spec:
       containers:
-        - name: echo-pods
-          image: muruu1/echo-pods:v1.0
-          imagePullPolicy: Always
+      - name: echo-pods
+        image: muruu1/echo-pods:v1.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: echo-pods
+  name: echo-pods-svc
   labels:
     app: echo-pods
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
-    - port: 80
-      targetPort: 80
-      nodePort: 30080
+  - port: 80
   selector:
     app: echo-pods
