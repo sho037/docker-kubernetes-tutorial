@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: echo-pods-dep
+spec:
+  strategy:
+    type: Recreate
+  replicas: 4
+  selector:
+    matchLabels:
+      app: echo-pods
+  template:
+    metadata:
+      labels:
+        app: echo-pods
+    spec:
+      containers:
+        - name: echo-pods
+          image: muruu1/echo-pods:v1.0
+          imagePullPolicy: Always
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"

@@ -1,8 +1,13 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: echo-pods
+  name: echo-pods-dep
 spec:
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
   replicas: 4
   selector:
     matchLabels:
@@ -16,3 +21,10 @@ spec:
         - name: echo-pods
           image: muruu1/echo-pods:v1.0
           imagePullPolicy: Always
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
