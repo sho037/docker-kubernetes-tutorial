@@ -6,6 +6,52 @@
 `muruu1/echo-pods:v2.0`  
 `muruu1/echo-pods:v1.0`
 
+---
+
+## Deployment
+
+アップデートの履歴を保存するオプションを付けて Deployment を起動
+
+```bash
+kubectl apply -f wl-deployment-recreate.yaml --record
+```
+
+リソースを追従して出力
+
+```bash
+kubectl get [pods/replicasets] --watch
+```
+
+変更履歴の確認
+
+```bash
+kubectl rollout history deployment echo-pods-dep
+```
+
+1 つ前にロールバック
+
+```bash
+kubectl rollout undo deployment echo-pods-dep
+```
+
+リビジョンを指定してロールバック
+
+```bash
+kubectl rollout undo deployment echo-pods-dep --to-revision 1
+```
+
+Deployment 更新の一時停止
+
+```bash
+kubectl rollout pause deployment echo-pods-dep
+```
+
+Deployment 更新の一時停止解除
+
+```bash
+kubectl rollout resume deployment echo-pods-dep
+```
+
 リソースの再起動
 
 ```bash
