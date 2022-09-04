@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: echo-pods-argo
+spec:
+  strategy:
+    type: Recreate
+  replicas: 4
+  selector:
+    matchLabels:
+      app: echo-pods-argo
+  template:
+    metadata:
+      labels:
+        app: echo-pods-argo
+    spec:
+      containers:
+        - name: echo-pods
+          image: muruu1/echo-pods:v1.0
+          imagePullPolicy: Always
