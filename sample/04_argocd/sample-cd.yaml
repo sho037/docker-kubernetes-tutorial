@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: sample
+spec:
+  destination:
+    name: ""
+    namespace: argo-test
+    server: "https://kubernetes.default.svc"
+  source:
+    path: sample/04_argocd/manifest
+    repoURL: "https://github.com/mu-ruU1/docker-kubernetes-demo.git"
+    targetRevision: test
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
