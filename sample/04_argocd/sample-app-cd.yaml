@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: sample
+  name: sample-app
 spec:
   destination:
     name: ""
     namespace: argo-test
     server: "https://kubernetes.default.svc"
   source:
-    path: sample/04_argocd/manifest
+    path: sample/04_argocd/01_sample-app
     repoURL: "https://github.com/mu-ruU1/docker-kubernetes-demo.git"
     targetRevision: test
   project: default
