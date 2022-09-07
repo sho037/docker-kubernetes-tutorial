@@ -7,7 +7,7 @@ Kubernetes クラスタを作るにあたり、[Proxmox VE](https://proxmox.com/
 下の表はデフォルトで Terraform が構築する VM のリストです。  
 環境に合わせて `terraform.tfvars`と`resource.tf`を編集して下さい。
 
-| ユーザ名 |  ホスト名  |  役割  | VMID | CPU | メモリ | ストレージ | ディスクサイズ |       IP        |         OS          |
+| ユーザ名 |  ホスト名  |  役割  | VMID | CPU | メモリ | Storage ID | ディスクサイズ |       IP        |         OS          |
 | :------: | :--------: | :----: | :--: | :-: | :----: | :--------: | :------------: | :-------------: | :-----------------: |
 |   k8s    | k8s-master | master | 1000 |  2  |  5GB   |   local    |      32GB      | 192.168.0.10/24 | Ubuntu Server 20.04 |
 |   k8s    | k8s-node1  | worker | 1001 |  2  |  5GB   |   local    |      32GB      | 192.168.0.11/24 | Ubuntu Server 20.04 |
