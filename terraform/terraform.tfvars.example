@@ -6,7 +6,7 @@ node            = "pve1"
 
 # common
 cpu_core = 2
-memory   = 3072
+memory   = 5120
 storage  = "local"
 size     = "32G"
 vmpw     = "password"
