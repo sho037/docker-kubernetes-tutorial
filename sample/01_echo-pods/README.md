@@ -9,12 +9,114 @@
 
 ---
 
-## Deployment
+## Docker
+
+### 1 コンテナイメージを見る
+
+```bash
+$ mkdir -p ~/kc3-docker/dumpimage
+$ cd ~/kc3-docker
+
+# コンテナイメージをtar形式で出力
+$ docker save muruu1/echo-pods | tar -xC ./dumpimage
+$ tree ./dumpimage
+
+# レイヤーに含まれるファイル群を確認
+$ tar --list -f ./dumpimage/........../layer.tar
+
+# ビルド時にCOPYしたファイルがある
+$ tar xOf ./dumpimage/........../layer.tar var/www/html/index.php
+```
+
+### 2 イメージの履歴を表示する
+
+```bash
+$ docker pull muruu1/echo-pods
+$ docker history muruu1/echo-pods
+```
+
+### 3 コンテナを起動
+
+```bash
+$ docker container run --publish 8080:80 muruu1/echo-pods:v1.0
+
+$ docker run --name test -dp 8080:80 muruu1/echo-pods:v2.0
+
+$ docker exec test pwd
+
+$ docker exec test ls
+
+$ docker exec -it test /bin/bash
+```
+
+---
+
+## Kubernetes
+
+### Pod
+
+リソースの作成及び更新
+
+```bash
+kubectl apply -f wl-pod.yaml
+```
+
+Pod の削除
+
+```bash
+kubectl delete pods <pod name>
+```
+
+Pod の詳細情報を表示
+
+```bash
+kubectl describe pods <pod name>
+```
+
+### ReplicaSet
+
+リソースの作成及び更新
+
+```bash
+kubectl apply -f wl-replicaset.yaml
+```
+
+ReplicaSet,Pod の確認
+
+```bash
+kubectl get replicasets,pods
+```
+
+レプリカ数を変更
+
+```bash
+kubectl scale replicaset <replicaset name> --replicas <number>
+```
+
+Pod の削除
+
+```bash
+kubectl delete pods <pod name>
+```
+
+ReplicaSet の詳細情報を表示
+
+```bash
+kubectl describe replicasets <replicaset name>
+```
+
+### Deployment
 
 アップデートの履歴を保存するオプションを付けて Deployment を起動
 
 ```bash
 kubectl apply -f wl-deployment-recreate.yaml --record
+```
+
+Deployment,ReplicaSet,Pod の確認
+
+```bash
+kubectl get deployments,replicasets,pods
 ```
 
 リソースを追従して出力
