@@ -2,6 +2,7 @@
 
 [Docker イメージ](https://hub.docker.com/r/muruu1/echo-pods)  
 `muruu1/echo-pods:latest`  
+`muruu1/echo-pods:v4.0`  
 `muruu1/echo-pods:v3.0`  
 `muruu1/echo-pods:v2.0`  
 `muruu1/echo-pods:v1.0`
