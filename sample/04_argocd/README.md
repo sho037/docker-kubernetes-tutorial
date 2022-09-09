@@ -1,4 +1,4 @@
-# ArgoCD
+# Argo CD
 
 Argo CD は、Kubernetes 用の宣言型 GitOps 継続的デリバリー ツールです。
 

@@ -25,6 +25,6 @@
     - Buildkit を利用したもの
     - サンプルの Dockerfile を管理している
   - [`04_argocd`](./sample/04_argocd)
-    - ArgoCD で使用するマニフェストファイルを管理している
+    - Argo CD で使用するマニフェストファイルを管理している
 - [`terraform`](./terraform/)
   - Kubernetes で利用する仮想マシンを Proxmox VE に作成する
