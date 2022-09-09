@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: helm-wordpress
+spec:
+  destination:
+    name: ""
+    namespace: default
+    server: "https://kubernetes.default.svc"
+  source:
+    path: ""
+    repoURL: "https://charts.bitnami.com/bitnami"
+    targetRevision: 15.2.0
+    chart: wordpress
+    helm:
+      valueFiles:
+        - values.yaml
+      parameters:
+        - name: service.type
+          value: NodePort
+        - name: persistence.size
+          value: 2Gi
+        - name: mariadb.primary.persistence.size
+          value: 1Gi
+  project: default
+  syncPolicy:
+    automated: null
