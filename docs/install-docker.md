@@ -1,4 +1,58 @@
-# Docker, Docker Compose のインストール
+# Docker (Rootless モード), Docker Compose のインストール
+
+apt パッケージのインデックスを更新
+
+```bash
+sudo apt-get update
+```
+
+HTTPS 経由でリポジトリを使用できるようにする
+
+```bash
+sudo apt-get install \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+```
+
+Docker の公式 GPG キーを追加
+
+```bash
+sudo mkdir -p /etc/apt/keyrings
+```
+
+```bash
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+```
+
+リポジトリをセットアップ
+
+```bash
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+```
+
+Docker エンジンをインストールする
+
+```bash
+sudo apt-get update
+```
+
+```bash
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+```
+
+root 以外のユーザーとしてデーモンをセットアップする
+
+```bash
+dockerd-rootless-setuptool.sh install
+```
+
+以上でセットアップは完了です
+
+---
 
 ## 1 Docker (Rootless モード)のインストール
 
@@ -116,6 +170,8 @@ export DOCKER_BUILDKIT=1
 
 ## 参考
 
+- [Install Docker Engine on Ubuntu](https://docs.docker.com/engine/install/ubuntu/) (docker docs)
+- [Run the Docker daemon as a non-root user (Rootless mode)](https://docs.docker.com/engine/security/rootless/) (docker docs)
 - [root ユーザー以外による Docker デーモン起動](https://matsuand.github.io/docs.docker.jp.onthefly/engine/security/rootless/)
 - [Docker デーモンをルート以外のユーザで実行](https://docs.docker.jp/engine/security/rootless.html)
 - [Docker を安全に一般ユーザで実行する](https://e-penguiner.com/rootless-docker-for-nonroot/)
