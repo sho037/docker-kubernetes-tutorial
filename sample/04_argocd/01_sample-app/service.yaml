@@ -3,8 +3,8 @@ kind: Service
 metadata:
   name: echo-pods-argo
 spec:
-#   type: NodePort
-  type: LoadBalancer
+  type: NodePort
+#   type: LoadBalancer
   ports:
     - protocol: TCP
       port: 80
