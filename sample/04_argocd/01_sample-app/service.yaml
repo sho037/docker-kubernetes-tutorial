@@ -3,10 +3,10 @@ kind: Service
 metadata:
   name: echo-pods-argo
 spec:
-#   type: ClusterIP
+  type: ClusterIP
 #   type: NodePort
-  type: LoadBalancer
-  loadBalancerIP: 192.168.10.242
+#   type: LoadBalancer
+#   loadBalancerIP: 192.168.10.242
   ports:
     - protocol: TCP
       port: 80
