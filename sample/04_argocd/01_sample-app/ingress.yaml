@@ -1,6 +1,8 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
   name: ingress-myservicea
 spec:
   rules:
@@ -12,5 +14,5 @@ spec:
           service:
             name: echo-pods-argo
             port:
-              number: 8080
+              number: 80
   ingressClassName: nginx
