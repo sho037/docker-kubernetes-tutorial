@@ -30,6 +30,18 @@ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.pas
 kubectl get svc -n argocd argocd-server
 ```
 
+## helmリポジトリ
+
+- https://charts.bitnami.com/bitnami
+
+- https://kubernetes.github.io/ingress-nginx
+
+- https://redhat-developer.github.io/redhat-helm-charts/
+
+- https://prometheus-community.github.io/helm-charts
+
+- https://kubernetes.github.io/dashboard/
+
 ## サンプル
 
 - [サンプル GUI](https://cd.apps.argoproj.io/)
