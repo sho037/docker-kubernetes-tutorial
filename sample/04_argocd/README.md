@@ -36,6 +36,8 @@ kubectl get svc -n argocd argocd-server
 
 - https://kubernetes.github.io/ingress-nginx
 
+- https://charts.jetstack.io
+
 - https://redhat-developer.github.io/redhat-helm-charts/
 
 - https://prometheus-community.github.io/helm-charts
