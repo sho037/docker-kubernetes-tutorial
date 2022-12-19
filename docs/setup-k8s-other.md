@@ -56,6 +56,15 @@ sudo apt-get install -y kubectl
 
 コントロールプレーンの`~/.kube/config`をコピーし、コピー先の`~/.kube/config`にペーストする
 
+### 4 エイリアス
+
+`.bashrc`に追加
+
+```bash
+alias k=kubectl
+complete -F __start_kubectl k
+```
+
 ---
 
 ## Node の停止/復旧
