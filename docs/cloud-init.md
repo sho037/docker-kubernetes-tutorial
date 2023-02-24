@@ -9,7 +9,7 @@ Proxmox のスナップショット機能を使いたいために、`local`ス�
 
 ## 2 準備
 
-[Ubuntu Server 20.04 (Focal Fossa)](https://cloud-images.ubuntu.com/focal/current/)を使用しています。  
+[Ubuntu Cloud Images](https://cloud-images.ubuntu.com/)を使用しています。   
 ディスクイメージに`QEMUゲストエージェント`をインストールする。
 
 ```bash
@@ -21,7 +21,7 @@ curl -O https://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-amd6
 ```
 
 ```bash
-virt-customize -a focal-server-cloudimg-amd64.img --install qemu-guest-agent
+virt-customize -a focal-server-cloudimg-amd64.img --install qemu-guest-agent --timezone Asia/Tokyo
 ```
 
 ## 3 テンプレートの作成
@@ -29,7 +29,7 @@ virt-customize -a focal-server-cloudimg-amd64.img --install qemu-guest-agent
 Proxmox クラスタまたはホストのシェルで以下を実行する
 
 ```bash
-qm create 9000 --name ubuntu2004-cloud-init --memory 2048 --net0 virtio,bridge=vmbr0
+qm create 9000 --name ubuntu2004-cloud-img --memory 2048 --net0 virtio,bridge=vmbr0 --agent 1
 ```
 
 ```bash
@@ -49,15 +49,7 @@ qm set 9000 --boot c --bootdisk scsi0
 ```
 
 ```bash
-qm set 9000 --serial0 socket --vga serial0
-```
-
-```bash
 qm template 9000
-```
-
-```bash
-rm focal-server-cloudimg-amd64.img
 ```
 
 Next> [Terraform の Proxmox ユーザーとロールの作成](./terraform.md#3-terraform-の-proxmox-ユーザーとロールの作成)
