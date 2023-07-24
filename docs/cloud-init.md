@@ -17,11 +17,15 @@ sudo apt install libguestfs-tools -y
 ```
 
 ```bash
-curl -O https://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-amd64.img
+curl -O https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img
 ```
 
 ```bash
-virt-customize -a focal-server-cloudimg-amd64.img --install qemu-guest-agent --timezone Asia/Tokyo
+virt-customize \
+  --add jammy-server-cloudimg-amd64.img \
+  --install qemu-guest-agent \
+  --timezone Asia/Tokyo \
+  --edit '/etc/ssh/sshd_config:s/PasswordAuthentication no/PasswordAuthentication yes/'
 ```
 
 ## 3 テンプレートの作成
@@ -29,11 +33,11 @@ virt-customize -a focal-server-cloudimg-amd64.img --install qemu-guest-agent --t
 Proxmox クラスタまたはホストのシェルで以下を実行する
 
 ```bash
-qm create 9000 --name ubuntu2004-cloud-img --memory 2048 --net0 virtio,bridge=vmbr0 --agent 1
+qm create 9000 --name ubuntu2204-cloud-img --memory 2048 --net0 virtio,bridge=vmbr0 --agent 1
 ```
 
 ```bash
-qm importdisk 9000 focal-server-cloudimg-amd64.img local --format qcow2
+qm importdisk 9000 jammy-server-cloudimg-amd64.img local --format qcow2
 ```
 
 ```bash
