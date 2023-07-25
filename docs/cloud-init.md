@@ -21,8 +21,8 @@ curl -O https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd6
 ```
 
 ```bash
-virt-customize \
-  --add jammy-server-cloudimg-amd64.img \
+sudo virt-customize \
+  -a jammy-server-cloudimg-amd64.img \
   --install qemu-guest-agent \
   --timezone Asia/Tokyo \
   --edit '/etc/ssh/sshd_config:s/PasswordAuthentication no/PasswordAuthentication yes/'
