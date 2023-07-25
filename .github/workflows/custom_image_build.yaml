@@ -1,0 +1,49 @@
+name: Custom Image Build and Release
+on:
+  schedule:
+    - cron: "0 0 * * *"
+
+env:
+  URL_TO_OS_IMAGE: https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img
+  IMAGE_FILE: ubuntu-cloudimg.img
+  CUSTOMIZED_IMAGE_FILE: ubuntu-custom-cloudimg.img
+
+jobs:
+  build_and_release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download OS Image
+        run: |
+          curl -o $IMAGE_FILE $URL_TO_OS_IMAGE
+
+      - name: Install libguestfs-tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libguestfs-tools
+
+      - name: Customize Image
+        run: |
+          virt-customize \
+            --add $IMAGE_FILE \
+            --install qemu-guest-agent \
+            --timezone Asia/Tokyo \
+            --edit '/etc/ssh/sshd_config:s/PasswordAuthentication no/PasswordAuthentication yes/'
+
+      - name: Save Customized Image
+        run: |
+          virt-sysprep -a $IMAGE_FILE
+          mv $IMAGE_FILE $CUSTOMIZED_IMAGE_FILE
+
+      - name: Create Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: customized-image
+          path: $CUSTOMIZED_IMAGE_FILE
+
+      - name: Upload Artifact to Release
+        uses: actions/upload-release-asset@v1
+        with:
+          asset_path: $CUSTOMIZED_IMAGE_FILE
+          asset_name: $CUSTOMIZED_IMAGE_FILE
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
