@@ -33,7 +33,6 @@ jobs:
 
       - name: Save Customized Image
         run: |
-          virt-sysprep -a $IMAGE_FILE
           mv $IMAGE_FILE $CUSTOMIZED_IMAGE_FILE
 
       - name: Create Artifact
