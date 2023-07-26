@@ -6,8 +6,7 @@ on:
 
 env:
   URL_TO_OS_IMAGE: https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img
-  IMAGE_FILE: ubuntu-cloudimg.img
-  CUSTOMIZED_IMAGE_FILE: ubuntu-custom-cloudimg.img
+  IMAGE_FILE: ubuntu-custom-cloudimg.img
 
 jobs:
   build_and_release:
@@ -31,10 +30,6 @@ jobs:
             --timezone Asia/Tokyo \
             --edit '/etc/ssh/sshd_config:s/PasswordAuthentication no/PasswordAuthentication yes/'
 
-      - name: Save Customized Image
-        run: |
-          mv $IMAGE_FILE $CUSTOMIZED_IMAGE_FILE
-
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1.0.0
@@ -52,6 +47,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: $CUSTOMIZED_IMAGE_FILE
-          asset_name: $CUSTOMIZED_IMAGE_FILE
+          asset_path: $IMAGE_FILE
+          asset_name: $IMAGE_FILE
           repo_token: ${{ secrets.GITHUB_TOKEN }}
