@@ -49,4 +49,3 @@ jobs:
           upload_url: ${{ github.event.release.upload_url }}
           asset_path: $IMAGE_FILE
           asset_name: $IMAGE_FILE
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
