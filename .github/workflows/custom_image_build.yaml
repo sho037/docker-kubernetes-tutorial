@@ -13,6 +13,8 @@ jobs:
 # https://docs.github.com/ja/rest/releases/releases?apiVersion=2022-11-28#delete-a-release
   delete_release:
     runs-on: ubuntu-latest
+
+    steps:
     - name: Delete Release
       env:
         DELETE_TOKEN: ${{ secrets.DELETE_TOKEN }}
