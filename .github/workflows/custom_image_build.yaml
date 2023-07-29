@@ -64,6 +64,7 @@ jobs:
       - name: Calculation SHA-256 Hash
         run: |
           HASH=$(sha256sum ${{ env.IMAGE_FILE }} | awk '{print $1}')
+          echo "HASH=$HASH" >> $GITHUB_ENV
 
       - name: Create Release
         id: create_release
@@ -78,7 +79,7 @@ jobs:
 
             |Filename|sha256 hash|
             |:--:|:--:|
-            |![ubuntu-custom-cloudimg.img](https://github.com/mu-ruU1/docker-kubernetes-tutorial/releases/download/v1/ubuntu-custom-cloudimg.img)|$HASH|
+            |[ubuntu-custom-cloudimg.img](https://github.com/mu-ruU1/docker-kubernetes-tutorial/releases/download/v1/ubuntu-custom-cloudimg.img)|${{ env.HASH }}|
   
             - Downloaded from ${{ env.URL_TO_OS_IMAGE }}
             - Customized by virt-customize
