@@ -12,7 +12,7 @@ Proxmox のスナップショット機能を使いたいために、`local`ス�
 ### カスタマイズされたものを使用
 
 ```bash
-curl -O https://github.com/mu-ruU1/docker-kubernetes-tutorial/releases/download/v1/ubuntu-custom-cloudimg.img
+curl -O https://github.com/mu-ruU1/docker-kubernetes-tutorial/releases/download/v1/ubuntu-custom-cloudimg.img -L
 ```
 
 ### 個人でカスタマイズ

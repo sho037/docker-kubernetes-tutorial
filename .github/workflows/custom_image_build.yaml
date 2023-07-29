@@ -61,6 +61,10 @@ jobs:
             --timezone Asia/Tokyo \
             --edit '/etc/ssh/sshd_config:s/PasswordAuthentication no/PasswordAuthentication yes/'
 
+      - name: Calculation SHA-256 Hash
+        run: |
+          HASH=$(sha256sum ${{ env.IMAGE_FILE }} | awk '{print $1}')
+
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1.1.4
@@ -70,7 +74,12 @@ jobs:
           tag_name: v1
           release_name: Ubuntu Custom Image
           body: |
-            Customized Ubuntu Image
+            ## Customized Ubuntu Image
+
+            |Filename|sha256 hash|
+            |:--:|:--:|
+            |![ubuntu-custom-cloudimg.img](https://github.com/mu-ruU1/docker-kubernetes-tutorial/releases/download/v1/ubuntu-custom-cloudimg.img)|$HASH|
+  
             - Downloaded from ${{ env.URL_TO_OS_IMAGE }}
             - Customized by virt-customize
               - Installed qemu-guest-agent
