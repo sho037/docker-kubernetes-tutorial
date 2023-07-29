@@ -33,6 +33,7 @@ jobs:
 
     - name: Delete Release
       run: |
+        echo "Release URL: $url"
         curl -L \
           -X DELETE \
           -H "Accept: application/vnd.github+json" \
