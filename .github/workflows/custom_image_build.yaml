@@ -29,6 +29,7 @@ jobs:
           exit 1
         fi
         url=$(echo "$json_data" | jq -r '.url')
+        echo "Release URL: $url"
 
     - name: Delete Release
       run: |
