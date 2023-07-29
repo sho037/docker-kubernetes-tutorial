@@ -9,6 +9,14 @@ Proxmox のスナップショット機能を使いたいために、`local`ス�
 
 ## 2 準備
 
+### カスタマイズされたものを使用
+
+```bash
+curl -O https://github.com/mu-ruU1/docker-kubernetes-tutorial/releases/download/v1/ubuntu-custom-cloudimg.img
+```
+
+### 個人でカスタマイズ
+
 [Ubuntu Cloud Images](https://cloud-images.ubuntu.com/)を使用しています。   
 ディスクイメージに`QEMUゲストエージェント`をインストールする。
 
@@ -28,6 +36,10 @@ sudo virt-customize \
   --edit '/etc/ssh/sshd_config:s/PasswordAuthentication no/PasswordAuthentication yes/'
 ```
 
+```bash
+mv jammy-server-cloudimg-amd64.img ubuntu-custom-cloudimg.img
+```
+
 ## 3 テンプレートの作成
 
 Proxmox クラスタまたはホストのシェルで以下を実行する
@@ -37,7 +49,7 @@ qm create 9000 --name ubuntu2204-cloud-img --memory 2048 --net0 virtio,bridge=vm
 ```
 
 ```bash
-qm importdisk 9000 jammy-server-cloudimg-amd64.img local --format qcow2
+qm importdisk 9000 ubuntu-custom-cloudimg.img local --format qcow2
 ```
 
 ```bash

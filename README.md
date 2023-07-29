@@ -1,4 +1,9 @@
 # はじめて触る Docker・Kubernetes
+![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/mu-ruU1/docker-kubernetes-tutorial/custom_image_build.yaml?style=for-the-badge)
+![GitHub release (with filter)](https://img.shields.io/github/v/release/mu-ruU1/docker-kubernetes-tutorial?style=for-the-badge)
+![GitHub Release Date - Published_At](https://img.shields.io/github/release-date/mu-ruU1/docker-kubernetes-tutorial?style=for-the-badge)
+  
+[![dockeri.co](https://dockerico.blankenship.io/image/muruu1/echo-pods)](https://hub.docker.com/r/muruu1/echo-pods)
 
 ## Docker 環境構築
 
