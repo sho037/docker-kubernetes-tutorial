@@ -46,7 +46,7 @@ jobs:
     steps:
       - name: Download OS Image
         run: |
-          curl -o ${{ env.IMAGE_FILE }} ${{ env.URL_TO_OS_IMAGE }}
+          curl -o ${{ env.IMAGE_FILE }} ${{ env.URL_TO_OS_IMAGE }} -L
 
       - name: Install libguestfs-tools
         run: |
