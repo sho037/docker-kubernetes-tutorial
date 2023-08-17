@@ -57,7 +57,8 @@ jobs:
         run: |
           sudo virt-customize \
             -a ${{ env.IMAGE_FILE }} \
-            --install qemu-guest-agent \
+            --install qemu-guest-agent,avahi-daemon \
+            --update \
             --timezone Asia/Tokyo \
             --edit '/etc/ssh/sshd_config:s/PasswordAuthentication no/PasswordAuthentication yes/'
 
@@ -83,7 +84,7 @@ jobs:
 
             - Downloaded from ${{ env.URL_TO_OS_IMAGE }}
             - Customized by virt-customize
-              - Installed qemu-guest-agent
+              - Installed qemu-guest-agent, avahi-daemon
               - Set timezone to Asia/Tokyo
               - Enabled password authentication for SSH
           draft: false
