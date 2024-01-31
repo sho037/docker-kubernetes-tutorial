@@ -60,7 +60,6 @@ jobs:
             --install qemu-guest-agent,avahi-daemon \
             --update \
             --timezone Asia/Tokyo \
-           # --edit '/etc/ssh/sshd_config:s/PasswordAuthentication no/PasswordAuthentication yes/'
 
       - name: Calculation SHA-256 Hash
         run: |
