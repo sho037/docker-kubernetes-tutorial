@@ -6,8 +6,11 @@ datastore_vmdisk   = "local-lvm"
 initial_vmid       = 1000
 
 # vm
-cpu         = 3
-memory      = 3072
-file_format = "qcow2"
-disk_size   = "32"
-isoimg_url  = "https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img"
+cpu          = 3
+memory       = 3072
+file_format  = "qcow2"
+disk_size    = "32"
+ipv4_nwaddr  = "192.168.0.0/24"
+initial_ipv4 = "100" # 第4オクテット開始ポイント
+ipv4_gw      = "192.168.0.254"
+isoimg_url   = "https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img"

@@ -35,7 +35,7 @@ resource "proxmox_virtual_environment_vm" "vm" {
   tags        = ["k8s"]
 
   node_name = var.pve_node
-  vm_id     = format("%d", var.initial_vmid + count.index)
+  vm_id     = format("%d", var.initial_vmid + index(local.vm_map_list, each.value))
 
   agent {
     enabled = true
@@ -57,7 +57,7 @@ resource "proxmox_virtual_environment_vm" "vm" {
   disk {
     datastore_id = var.datastore_vmdisk
     file_format  = var.file_format
-    file_id      = proxmox_virtual_environment_file.latest_ubuntu2204_qcow2_img.id
+    file_id      = proxmox_virtual_environment_download_file.latest_ubuntu2204_qcow2_img.id
     interface    = "scsi0"
     size         = var.disk_size
   }
@@ -71,8 +71,8 @@ resource "proxmox_virtual_environment_vm" "vm" {
   initialization {
     ip_config {
       ipv4 {
-        address = each.value.ipv4
-        gateway = each.value.ipv4_gw
+        address = "${cidrhost(var.ipv4_nwaddr, index(local.vm_map_list, each.value) + var.initial_ipv4)}/24"
+        gateway = var.ipv4_gw
       }
     }
 
