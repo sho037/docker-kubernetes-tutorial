@@ -40,6 +40,12 @@ pveum user add terraform-prov@pve --password <password>
 pveum aclmod / -user terraform-prov@pve -role TerraformProv
 ```
 
+### 4 ユーザーのAPIトークンを作成
+
+```bash
+pveum user token add terraform-prov@pve provider --privsep=0
+```
+
 ---
 
 ## 4 初期化と実行

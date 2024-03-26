@@ -1,6 +1,7 @@
 export PROXMOX_VE_ENDPOINT=https://proxmox.example.com:8006/
 export PROXMOX_VE_USERNAME=terraform-prov@pve
 export PROXMOX_VE_PASSWORD=password
-export PROXMOX_VE_INSECURE=true
+export PROXMOX_VE_SSH_USERNAME=root
+export PROXMOX_VE_SSH_PASSWORD=password
 export TF_VAR_vm_username=ubuntu
 export TF_VAR_vm_password=password

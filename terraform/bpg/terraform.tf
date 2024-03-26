@@ -8,5 +8,5 @@ terraform {
 }
 
 provider "proxmox" {
-  # Configuration options
+  insecure = true
 }
