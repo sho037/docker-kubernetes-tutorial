@@ -37,7 +37,14 @@ package_upgrade: true
 ssh_pwauth: true
 power_state:
   mode: reboot
-
+write_files:
+  - path: /etc/netplan/90-config.yaml
+    content: |
+      network:
+        ethernets:
+          eth0:
+            optional: true
+    permissions: "0600"
 EOF
 
     file_name = "cloud-config-${each.value.name}.yaml"
