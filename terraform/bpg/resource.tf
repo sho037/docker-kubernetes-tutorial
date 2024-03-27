@@ -13,14 +13,28 @@ resource "proxmox_virtual_environment_file" "cloud_config" {
   source_raw {
     data = <<EOF
 #cloud-config
+users:
+  - name: ${var.vm_username}
+    passwd: ${bcrypt(var.vm_password)}
+    lock_passwd: false
+    groups:
+      - sudo
+    ssh_import_id:
+      - ${var.ssh_import_id}
+    ssh_authorized_keys:
+      - ${var.ssh_authorized_keys}
+    shell: /bin/bash
+    sudo: ALL=(ALL) NOPASSWD:ALL
 timezone: Asia/Tokyo
 packages:
   - qemu-guest-agent
   - net-tools
   - traceroute
-package_update: true
 package_upgrade: true
-package_reboot_if_required: true
+ssh_pwauth: true
+power_state:
+  mode: reboot
+
 EOF
 
     file_name = "cloud-config.yaml"
@@ -74,11 +88,6 @@ resource "proxmox_virtual_environment_vm" "vm" {
         address = "${cidrhost(var.ipv4_nwaddr, index(local.vm_map_list, each.value) + var.initial_ipv4)}/24"
         gateway = var.ipv4_gw
       }
-    }
-
-    user_account {
-      username = var.vm_username
-      password = var.vm_password
     }
 
     user_data_file_id = proxmox_virtual_environment_file.cloud_config.id

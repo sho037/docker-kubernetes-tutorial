@@ -6,6 +6,8 @@ variable "initial_vmid" {}
 
 variable "vm_username" {}
 variable "vm_password" {}
+variable "ssh_import_id" {}
+variable "ssh_authorized_keys" {}
 
 variable "cpu" {}
 variable "memory" {}
