@@ -6,6 +6,8 @@ resource "proxmox_virtual_environment_download_file" "latest_ubuntu2204_qcow2_im
 }
 
 resource "proxmox_virtual_environment_file" "cloud_config" {
+  for_each = { for vm in local.vm_map_list : vm.name => vm }
+
   node_name    = var.pve_node
   datastore_id = var.datastore_snippets
   content_type = "snippets"
@@ -25,6 +27,7 @@ users:
       - ${var.ssh_authorized_keys}
     shell: /bin/bash
     sudo: ALL=(ALL) NOPASSWD:ALL
+hostname: ${each.value.name}
 timezone: Asia/Tokyo
 packages:
   - qemu-guest-agent
@@ -37,7 +40,7 @@ power_state:
 
 EOF
 
-    file_name = "cloud-config.yaml"
+    file_name = "cloud-config-${each.value.name}.yaml"
   }
 }
 
@@ -45,7 +48,7 @@ resource "proxmox_virtual_environment_vm" "vm" {
   for_each = { for vm in local.vm_map_list : vm.name => vm }
 
   name        = each.value.name
-  description = "## ${each.value.name}"
+  description = "# ${each.value.name}"
   tags        = ["k8s"]
 
   node_name = var.pve_node
@@ -90,7 +93,7 @@ resource "proxmox_virtual_environment_vm" "vm" {
       }
     }
 
-    user_data_file_id = proxmox_virtual_environment_file.cloud_config.id
+    user_data_file_id = proxmox_virtual_environment_file.cloud_config[each.key].id
   }
 
   serial_device {}
