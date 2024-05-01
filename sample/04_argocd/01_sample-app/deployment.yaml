@@ -5,7 +5,7 @@ metadata:
 spec:
   strategy:
     type: Recreate
-  replicas: 7
+  replicas: 5
   selector:
     matchLabels:
       app: echo-pods-argo
@@ -16,5 +16,5 @@ spec:
     spec:
       containers:
         - name: echo-pods
-          image: muruu1/echo-pods:v3.0
+          image: muruu1/echo-pods:v4.0
           imagePullPolicy: Always
